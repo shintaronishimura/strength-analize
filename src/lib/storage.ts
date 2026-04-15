@@ -1,4 +1,4 @@
-import { writeTextFile, readTextFile, exists, BaseDirectory } from '@tauri-apps/plugin-fs';
+import { writeTextFile, readTextFile, exists, mkdir, BaseDirectory } from '@tauri-apps/plugin-fs';
 import type { AppState } from '../types';
 
 const SAVE_FILE_NAME = 'tcl-analysis-state.json';
@@ -6,7 +6,11 @@ const SAVE_FILE_NAME = 'tcl-analysis-state.json';
 export async function saveState(state: AppState): Promise<void> {
   try {
     const content = JSON.stringify(state, null, 2);
-    // Ensure the app data directory exists (Tauri v2 uses BaseDirectory enum)
+    // Ensure the app data directory exists
+    const dirExists = await exists('', { baseDir: BaseDirectory.AppData });
+    if (!dirExists) {
+      await mkdir('', { baseDir: BaseDirectory.AppData, recursive: true });
+    }
     await writeTextFile(SAVE_FILE_NAME, content, {
       baseDir: BaseDirectory.AppData,
     });

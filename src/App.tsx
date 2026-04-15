@@ -51,9 +51,9 @@ function App() {
 
       <main className="phase-content">
         {currentPhase === 'INPUT' && (
-          <InputPhase 
-            verbs={verbs} 
-            addVerb={addVerb} 
+          <InputPhase
+            verbs={verbs}
+            addVerb={addVerb}
             removeVerb={removeVerb}
             clearAll={clearAll}
           />

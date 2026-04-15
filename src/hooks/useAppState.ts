@@ -26,13 +26,13 @@ export function useAppState() {
     }
   }, [verbs, isLoaded]);
 
-  const addVerb = useCallback((text: string) => {
+  const addVerb = useCallback((text: string, category: Category = 'UNCLASSIFIED') => {
     const trimmed = text.trim();
     if (!trimmed) return;
-    
+
     setVerbs(prev => [
       ...prev,
-      { id: uuidv4(), text: trimmed, category: 'UNCLASSIFIED' }
+      { id: uuidv4(), text: trimmed, category }
     ]);
   }, []);
 
