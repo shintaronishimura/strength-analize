@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx tsc:*)",
+      "Bash(npx vite:*)",
+      "Bash(npm run:*)",
+      "Bash(C:/projects/strength-analize/src-tauri/target/release/bundle/nsis/strength-analize_0.1.0_x64-setup.exe:*)",
+      "Bash(powershell -ExecutionPolicy Bypass -File /tmp/create_shortcut.ps1)",
+      "Bash(git remote:*)",
+      "Bash(git push:*)",
+      "Bash(git ls-tree:*)",
+      "Bash(git:*)"
+    ]
+  }
+}
